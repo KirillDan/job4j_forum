@@ -34,6 +34,6 @@ public class RegControl {
     
     @GetMapping("/reg")
     public String reg() {
-    	return "/reg";
+    	return "reg";
     }
 }
