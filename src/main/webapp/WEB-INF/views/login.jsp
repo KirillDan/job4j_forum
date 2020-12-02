@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <body>
-<a href="<c:url value='/reg'/>">Регистрация</a>
+<a href="<c:url value='/registration'/>">Регистрация</a>
 <c:if test="${not empty errorMessge}">
     <div style="color:red; font-weight: bold; margin: 30px 0px;">
             ${errorMessge}

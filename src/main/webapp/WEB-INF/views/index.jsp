@@ -27,7 +27,7 @@
 				<li class="nav-item"><a class="nav-link"
 					href="<c:url value='/index'/>">Главная страница</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="<c:url value='/create'/>">Создать пост</a></li>
+					href="<c:url value='/post/create'/>">Создать пост</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="<c:url value='/logout'/>">Выйти</a></li>
 			</ul>
@@ -49,11 +49,11 @@
 				<tbody>
 					<c:forEach items="${posts}" var="post">
 						<tr>
-							<td><a href='<c:url value="/update?id=${post.id}"/>'> <i
+							<td><a href='<c:url value="/post/update/${post.id}"/>'> <i
 									class="fa fa-edit mr-3"></i>
 							</a> <c:out value="${post.name}" /></td>
 							<td><c:out value="${post.created.time}" /></td>
-							<td><a href='<c:url value="/post?id=${post.id}"/>'>-></a></td>
+							<td><a href='<c:url value="/post/${post.id}"/>'>-></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

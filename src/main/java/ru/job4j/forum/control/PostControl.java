@@ -4,8 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.service.PostService;
@@ -18,13 +20,13 @@ public class PostControl {
 		this.service = service;
 	}
 	
-	@GetMapping("/post")
-	public String post(@RequestParam Integer id, Model model) {
-		model.addAttribute("post", service.findById(id));
-		return "post";
-	}
+	@RequestMapping(value="/post/{id}", method = RequestMethod.GET)
+    public String get(@PathVariable int id, Model model) {
+        model.addAttribute("post", service.findById(id));
+        return "post";
+    }
 	
-	@GetMapping("/create")
+	@GetMapping("/post/create")
 	public String create(Model model) {
 		Post post = new Post();
 		post.setId(0);
@@ -32,15 +34,15 @@ public class PostControl {
 		return "post/edit";
 	}
 	
-	@GetMapping("/update")
-	public String update(@RequestParam Integer id, Model model) {
+	@GetMapping("/post/update/{id}")
+	public String update(@PathVariable int id, Model model) {
 		model.addAttribute("post", service.findById(id));
 		return "post/edit";
 	}
 	
-	@PostMapping("/save")
+	@PostMapping("/post/save")
     public String save(@ModelAttribute Post post) {
     	service.add(post);
-        return "redirect:/";
+        return "redirect:/post/" + post.getId();
     }
 }

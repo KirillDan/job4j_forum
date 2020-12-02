@@ -26,7 +26,7 @@ public class LoginControl {
             errorMessge = "You have been successfully logged out !!";
         }
         model.addAttribute("errorMessge", errorMessge);
-        return "login";
+        return "log";
     }
 
     @RequestMapping(value="/logout", method = RequestMethod.GET)
@@ -35,6 +35,6 @@ public class LoginControl {
         if (auth != null){
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        return "redirect:/login?logout=true";
+        return "redirect:/log?logout=true";
     }
 }

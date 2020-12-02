@@ -23,7 +23,7 @@ public class RegControl {
         this.authorities = authorities;
     }
 
-    @PostMapping("/reg")
+    @PostMapping("/registration")
     public String save(@ModelAttribute User user) {
         user.setEnabled(true);
         user.setPassword(encoder.encode(user.getPassword()));
@@ -32,7 +32,7 @@ public class RegControl {
         return "redirect:/login";
     }
     
-    @GetMapping("/reg")
+    @GetMapping("/registration")
     public String reg() {
     	return "reg";
     }

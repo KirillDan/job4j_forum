@@ -1,6 +1,8 @@
 package ru.job4j.forum.model;
 
 import javax.persistence.*;
+
+import java.util.Calendar;
 import java.util.Objects;
 
 @Entity
@@ -12,6 +14,13 @@ public class Authority {
 
     private String authority;
 
+    public static Authority of(int id, String authority) {
+    	Authority auth = new Authority();
+    	auth.setId(id);
+    	auth.authority = authority;
+		return auth;
+	}
+    
     public int getId() {
         return id;
     }

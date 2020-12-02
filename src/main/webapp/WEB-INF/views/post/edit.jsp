@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <body>
-	<form action="<c:url value='/save'/>" method='POST'>
+	<form action="<c:url value='/post/save'/>" method='POST'>
 	<input type="hidden" name='id' value="${post.id}">
 		<table>
 			<tr>
