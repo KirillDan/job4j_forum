@@ -22,8 +22,14 @@ public class PostControl {
 	
 	@RequestMapping(value="/post/{id}", method = RequestMethod.GET)
     public String get(@PathVariable int id, Model model) {
-        model.addAttribute("post", service.findById(id));
-        return "post";
+		String result = "post";
+		try {
+			Post post = service.findById(id);
+			model.addAttribute("post", post);
+		} catch (NullPointerException e) {
+			result = "redirect:/index";
+		}
+        return result;
     }
 	
 	@GetMapping("/post/create")
@@ -36,8 +42,14 @@ public class PostControl {
 	
 	@GetMapping("/post/update/{id}")
 	public String update(@PathVariable int id, Model model) {
-		model.addAttribute("post", service.findById(id));
-		return "post/edit";
+		String result = "post/edit";
+		try {
+			Post post = service.findById(id);
+			model.addAttribute("post", post);
+		} catch (NullPointerException e) {
+			result = "redirect:/index";
+		}
+        return result;
 	}
 	
 	@PostMapping("/post/save")

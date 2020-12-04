@@ -8,6 +8,7 @@ import ru.job4j.forum.repository.PostRepository;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PostService {
@@ -23,8 +24,15 @@ public class PostService {
     	this.posts.save(post);
     }
     
-    public Post findById(Integer id) {
-    	return this.posts.findById(id).get();
+    public Post findById(Integer id) throws NullPointerException {
+    	Optional<Post> optional = this.posts.findById(id);
+    	Post result = null;
+    	if (optional.isEmpty()) {
+    		throw new NullPointerException("Пользователь с id = " + id + " не найден");
+    	} else {
+    		result = optional.get();
+    	}
+    	return result;
     }
     
     public List<Post> getAll() {
