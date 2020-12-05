@@ -27,10 +27,10 @@ public class PostService {
     public Post findById(Integer id) throws NullPointerException {
     	Optional<Post> optional = this.posts.findById(id);
     	Post result = null;
-    	if (optional.isEmpty()) {
-    		throw new NullPointerException("Пользователь с id = " + id + " не найден");
-    	} else {
+    	if (optional.isPresent()) {
     		result = optional.get();
+    	} else {
+    		throw new NullPointerException("Пользователь с id = " + id + " не найден");
     	}
     	return result;
     }
