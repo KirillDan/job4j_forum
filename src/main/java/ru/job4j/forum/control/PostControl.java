@@ -26,7 +26,7 @@ public class PostControl {
     public String get(@PathVariable int id, Model model) {
 		String result = "redirect:/index";
 		Optional<Post> optional = service.findById(id);
-		if (!optional.isEmpty()) {
+		if (optional.isPresent()) {
 			result = "post";
 			model.addAttribute("post", optional.get());
 		}
@@ -45,7 +45,7 @@ public class PostControl {
 	public String update(@PathVariable int id, Model model) {
         String result = "redirect:/index";
 		Optional<Post> optional = service.findById(id);
-		if (!optional.isEmpty()) {
+		if (optional.isPresent()) {
 			result = "post/edit";
 			model.addAttribute("post", optional.get());
 		}

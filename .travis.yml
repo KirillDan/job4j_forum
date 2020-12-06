@@ -17,3 +17,9 @@ notifications:
     on_success: never # default: change
     on_failure: always # default: always
     
+deploy:
+  provider: heroku
+  api_key:
+    secure: PvUwZGLw4A8G73q4KhdWO3DgTSk4QwNyp+oKGSqJpw25j/v5Pcpx2W2V/nmmAx4H48QXwWk2w8/VNuOqXGuv7+Aeu5RucTXFlDY+cmzI0jjg+AAODQ1RGtuilkc2gUJXJ41tnfg+eIo7nKfQ+chr9xq3ppXwKs2VoovVZeDoRYLT93mZjnDJQ8QiKjOutp83FSVBMZKll2b3ZS6ZK98CpSbgpFG4yfwsuj9hfioC59CmZWOCp85PBbhITgCoTwCeyWhW/xUTWYZiwlceF1Ix+bu19pMlYH/vplQmNtgbjCUzXyZQV21l51pJOln22jfh8VDFToL6WtNiHZlXI6jPsnmAvGiZAMRULP39pLbw75tjP4sOGJ8mzgmWQ0qA/6vOC/ewKlb2NmIaLJX2KvyDnNNydsNKEJJuAQOkMN+MGN1p4apL/7eInZnb3xVHCnUrKw0LCC4njBQBKjE5nez+lpMPlWonP5zzsCTXMLMzCpC/Dcc4WhZUxfjd9QIXe1XjAU/YRotZqlglmiprJhwE92arErI+z0rGw1uJdbBVzcfBdQMaUYO+FWRNfjhvrqhZZDUFCByxUXI0yZaPhTIUlvWvsubaJFuESNNRvswe2FRSg8UlBK4iCwE5g72WQJQ5auHmP9Z2KCzts4GUIWsJmRLMVZBTu2FrqDkDKfTwIiE=
+  app: frozen-peak-80021
+  
