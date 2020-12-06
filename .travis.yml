@@ -1,12 +1,10 @@
 language: java
  
 sudo: false
- 
-jdk: 
-  - openjdk14
 
-script:
-  - mvn clean package -Ptest
+install: true
+
+script: mvn clean package -DskipTests=true
 
 after_success:
 - export CODECOV_TOKEN="5a739b4c-2b8b-40ff-a871-54729303bacb"

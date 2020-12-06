@@ -1,5 +1,7 @@
 package ru.job4j.forum.control;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,12 +24,11 @@ public class PostControl {
 	
 	@RequestMapping(value="/post/{id}", method = RequestMethod.GET)
     public String get(@PathVariable int id, Model model) {
-		String result = "post";
-		try {
-			Post post = service.findById(id);
-			model.addAttribute("post", post);
-		} catch (NullPointerException e) {
-			result = "redirect:/index";
+		String result = "redirect:/index";
+		Optional<Post> optional = service.findById(id);
+		if (!optional.isEmpty()) {
+			result = "post";
+			model.addAttribute("post", optional.get());
 		}
         return result;
     }
@@ -42,14 +43,13 @@ public class PostControl {
 	
 	@GetMapping("/post/update/{id}")
 	public String update(@PathVariable int id, Model model) {
-		String result = "post/edit";
-		try {
-			Post post = service.findById(id);
-			model.addAttribute("post", post);
-		} catch (NullPointerException e) {
-			result = "redirect:/index";
+        String result = "redirect:/index";
+		Optional<Post> optional = service.findById(id);
+		if (!optional.isEmpty()) {
+			result = "post/edit";
+			model.addAttribute("post", optional.get());
 		}
-        return result;
+        return result; 
 	}
 	
 	@PostMapping("/post/save")

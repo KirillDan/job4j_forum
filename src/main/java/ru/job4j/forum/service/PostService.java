@@ -24,15 +24,8 @@ public class PostService {
     	this.posts.save(post);
     }
     
-    public Post findById(Integer id) throws NullPointerException {
-    	Optional<Post> optional = this.posts.findById(id);
-    	Post result = null;
-    	if (optional.isPresent()) {
-    		result = optional.get();
-    	} else {
-    		throw new NullPointerException("Пользователь с id = " + id + " не найден");
-    	}
-    	return result;
+    public Optional<Post> findById(Integer id) throws NullPointerException {
+    	return this.posts.findById(id);
     }
     
     public List<Post> getAll() {

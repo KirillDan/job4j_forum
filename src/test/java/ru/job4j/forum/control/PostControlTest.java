@@ -9,6 +9,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
@@ -36,7 +38,7 @@ public class PostControlTest {
     @WithMockUser
     public void shouldReturnDefaultMessageForPost() throws Exception {
     	int id = 0;
-    	Mockito.when(this.posts.findById(id)).thenReturn(Post.of("test","test"));
+    	Mockito.when(this.posts.findById(id)).thenReturn(Optional.of(Post.of("test","test")));
         this.mockMvc.perform(get("/post/" + id))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -47,7 +49,7 @@ public class PostControlTest {
     @WithMockUser
     public void shouldReturnDefaultMessageForUpdate() throws Exception {
     	int id = 0;
-    	Mockito.when(this.posts.findById(id)).thenReturn(Post.of("test","test"));
+    	Mockito.when(this.posts.findById(id)).thenReturn(Optional.of(Post.of("test","test")));
         this.mockMvc.perform(get("/post/update/" + id))
                 .andDo(print())
                 .andExpect(status().isOk())
